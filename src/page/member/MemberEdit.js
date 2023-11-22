@@ -169,7 +169,7 @@ export function MemberEdit() {
           <Heading>{id}님 정보 수정</Heading>
         </CardHeader>
         <CardBody>
-          <FormControl mb={2}>
+          <FormControl mb={5}>
             <FormLabel>password</FormLabel>
             <Input
               type="text"
@@ -182,7 +182,7 @@ export function MemberEdit() {
           </FormControl>
 
           {password.length > 0 && (
-            <FormControl mb={2}>
+            <FormControl mb={5}>
               <FormLabel>password 확인</FormLabel>
               <Input
                 type="text"
@@ -192,7 +192,7 @@ export function MemberEdit() {
             </FormControl>
           )}
 
-          <FormControl mb={2}>
+          <FormControl mb={5}>
             <FormLabel>nickName</FormLabel>
             <Flex gap={2}>
               <Input
@@ -214,7 +214,7 @@ export function MemberEdit() {
 
           {/*  email을 변경하면(작성시작) 중복확인 다시 하도록  */}
           {/*  기존 email과 같으면 중복확인 안해도됨 */}
-          <FormControl mb={2}>
+          <FormControl mb={5}>
             <FormLabel>email</FormLabel>
             <Flex gap={2}>
               <Input
