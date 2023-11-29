@@ -33,7 +33,26 @@ import { CommentContainer } from "../../component/CommentContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as emptyHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as fullHeart } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 
+function LikeIcon({ type }) {
+  const animateStyle = {
+    animate: { scale: [0, 1], y: [20, 0] },
+    transition: { type: "spring" },
+  };
+  if (type === "like") {
+    return (
+      <motion.div {...animateStyle}>
+        <FontAwesomeIcon icon={fullHeart} size="xl" />
+      </motion.div>
+    );
+  }
+  return (
+    <motion.div {...animateStyle}>
+      <FontAwesomeIcon icon={emptyHeart} size="xl" />
+    </motion.div>
+  );
+}
 function LikeContainer({ like, onClick }) {
   const { isAuthenticated } = useContext(LoginContext);
 
@@ -42,12 +61,12 @@ function LikeContainer({ like, onClick }) {
   }
 
   return (
-    <Flex gap={2}>
+    <Flex gap={2} alignItems="center">
       <Tooltip isDisabled={isAuthenticated()} hasArrow label={"로그인 하세요."}>
-        <Button variant="ghost" size="xl" onClick={onClick}>
-          {like.like && <FontAwesomeIcon icon={fullHeart} size="xl" />}
-          {like.like || <FontAwesomeIcon icon={emptyHeart} size="xl" />}
-        </Button>
+        <Box onClick={onClick}>
+          {like.like && <LikeIcon type="like" />}
+          {like.like || <LikeIcon />}
+        </Box>
       </Tooltip>
       <Heading size="lg">{like.countLike}</Heading>
     </Flex>
