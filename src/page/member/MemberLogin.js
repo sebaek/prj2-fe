@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Card,
   CardBody,
@@ -23,8 +22,6 @@ export function MemberLogin() {
 
   const navigate = useNavigate();
   const toast = useToast();
-
-  const { fetchLogin } = useContext(LoginContext);
 
   function handleLogin() {
     axios
